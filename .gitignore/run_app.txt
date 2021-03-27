@@ -1,0 +1,122 @@
+pip install pipenv
+
+Then change directory to the folder containing your Python project and initiate Pipenv,
+cd my_project
+pipenv install
+
+This will create two new files, Pipfile and Pipfile.lock, in your project directory, 
+and a new virtual environment for your project if it doesn’t exist already. 
+If you add the --two or --three flags to that last command above, 
+it will initialise your project to use Python 2 or 3, respectively. 
+Otherwise the default version of Python will be used.
+
+Pipfiles contain information about the dependencies of your project, and supercede the requirements.txt 
+file that is typically used in Python projects. 
+If you’ve initiated Pipenv in a project with an existing requirements.txt file, 
+you should install all the packages listed in that file using Pipenv, before removing it from the project.
+
+To install a Python package for your project use the install keyword. 
+For example,
+
+pipenv install beautifulsoup4
+will install the current version of the Beautiful Soup package. 
+A package can be removed in a similar way with the uninstall keyword,
+
+pipenv uninstall beautifulsoup4
+
+The package name, together with its version and a list of its own dependencies, can be frozen 
+by updating the Pipfile.lock. 
+
+
+This is done using the lock keyword,
+
+pipenv lock
+
+It’s worth adding the Pipfiles to your Git repository, so that if another user were to clone the repository,
+ all they would have to do is install Pipenv on their system and then type,
+
+pipenv install
+
+Then Pipenv would automagically locate the Pipfiles, create a new virtual environment and install 
+the necessary packages.
+
+Managing your development environment:-->
+
+There are usually some Python packages that are only required in your development environment and not 
+in your production environment, such as unit testing packages. 
+Pipenv will let you keep the two environments separate using the --dev flag. For example,
+
+pipenv install --dev nose2
+will install nose2, but will also associate it as a package that is only required in your development environment. 
+This is useful because now, if you were to install your project in your production environment with,
+
+pipenv install
+
+the nose2 package won’t be installed by default. However, if another developer were to clone your project into their own development environment, they could use the --dev flag,
+
+pipenv install --dev
+and install all the dependencies, including the development packages.
+
+Running your code
+In order to activate the virtual environment associated with your Python project you 
+can simply use the shell keyword,
+
+pipenv shell
+
+You can also invoke shell commands in your virtual environment,
+ without explicitly activating it first, by using the run keyword. For example,
+
+pipenv run which python
+
+will run the which python command in your virtual environment, and display the path where the python executable, 
+that is associated with your virtual environment, is located. 
+This feature is a neat way of running your own Python code in the virtual environment,
+
+pipenv run python my_project.py
+
+If you’re like me and shudder at having to type so much every time you want to run Python, 
+you can always set up an alias in your shell, such as,
+
+alias prp="pipenv run python"
+
+
+==================================================================================
+
+PS C:\Users\SUNDAY\Desktop\Sunday_Work\pb_git_repo\pb_article_flask_app> pipenv install flask
+Creating a virtualenv for this project...
+Pipfile: C:\Users\SUNDAY\Desktop\Sunday_Work\pb_git_repo\pb_article_flask_app\Pipfile
+Using C:/Program Files/Python38/python.exe (3.8.8) to create virtualenv...
+[=== ] Creating virtual environment...created virtual environment CPython3.8.8.final.0-64 in 8667ms
+  creator CPython3Windows(dest=C:\Users\SUNDAY\.virtualenvs\pb_article_flask_app-aXlfJcqo, clear=False, no_vcs_ignore=False, global=False)
+  seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=C:\Users\SUNDAY\AppData\Local\pypa\virtualenv)
+    added seed packages: pip==21.0.1, setuptools==54.1.2, wheel==0.36.2
+  activators BashActivator,BatchActivator,FishActivator,PowerShellActivator,PythonActivator,XonshActivator
+
+Successfully created virtual environment!
+Virtualenv location: C:\Users\SUNDAY\.virtualenvs\pb_article_flask_app-aXlfJcqo
+Creating a Pipfile for this project...
+Installing flask...
+[=== ]flask Installing flask... to Pipfile's [packages]...
+Installation Succeeded
+Pipfile.lock not found, creating...
+Locking [dev-packages] dependencies...
+Locking [packages] dependencies...
+           Building requirements...
+Resolving dependencies...
+Success!
+Updated Pipfile.lock (ac8e32)!
+Installing dependencies from Pipfile.lock (ac8e32)...
+  ================================ 0/0 - 00:00:00
+To activate this project's virtualenv, run pipenv shell.
+Alternatively, run a command inside the virtualenv with pipenv run.
+PS C:\Users\SUNDAY\Desktop\Sunday_Work\pb_git_repo\pb_article_flask_app>
+
+
+
+C:\Users\SUNDAY\.virtualenvs\pb_article_flask_app-aXlfJcqo
+
+----------------------------------------------------------------------------
+
+pipenv run python app.py
+
+
