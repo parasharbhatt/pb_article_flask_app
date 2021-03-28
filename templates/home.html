@@ -1,0 +1,32 @@
+
+{% extends 'base.html' %}
+{% block contents %}
+<div>
+    <div class="apptitle">Article (Microblog)</div>
+    <div class="menu">
+        <Div class="menuItem">Recent</Div>
+        <Div class="menuItem">Calendar</Div>
+    </div>
+    <div>
+        <form  method="POST">
+            <input type="text" name="title" />
+            <textarea name="content">
+
+            </textarea>
+            <input type="submit" />
+        </form>
+
+        <div>
+            <div class="apptitle">Entries</div>
+            <div class="entries">
+                {% for entry in entries%}
+                    <p>{{ entry['title'] }}</p>
+                    <p>{{ entry['content'] }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</div>
+    
+{% endblock contents%}
