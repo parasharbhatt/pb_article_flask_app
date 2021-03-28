@@ -1,15 +1,22 @@
 
 {% extends 'base.html' %}
 {% block contents %}
-<div>
-    <div class="apptitle">Article (Microblog)</div>
-    <div class="menu">
-        <Div class="menuItem">Recent</Div>
-        <Div class="menuItem">Calendar</Div>
+
+<header>
+    <div class="apptitle">
+        <img class="logo" src="/static/assets/pb2.png" />
+        Article (Microblog)
     </div>
-    <div>
+    <div class="menu">
+        <Div class="menu-item">Recent</Div>
+        <Div class="menu-item">Calendar</Div>
+    </div>
+</header>
+
+<div class="container">
         <form  method="POST">
-            <input type="text" name="title" />
+            
+            <input type="text" name="title" class="txttitle" placeholder="Title"/>
             <textarea name="content">
 
             </textarea>
@@ -17,16 +24,37 @@
         </form>
 
         <div>
-            <div class="apptitle">Entries</div>
+            <div class="apptitle">Article List</div>
             <div class="entries">
                 {% for entry in entries%}
-                    <p>{{ entry['title'] }} - {{entry['articledate']}}</p>
-                    <p>{{ entry['content'] }}</p>
+                    <div class="entry-title">{{ entry[0] }} 
+                        ☆
+                        <span class="entry-date"> {{entry[1]}} </span>
+                    </div>
+                   <div class="entry-content">{{ entry[2] }}</div>
                 {% endfor %}
             </div>
         </div>
-    </div>
-
 </div>
+
+<footer>
+    <div class="footer-container">
+        <div class="left">
+            <a class="footer-item">Made by : Parashar Bhatt</a>
+            <a class="footer-item">Check out my other projects</a>
+        </div>
+        <div class="right">
+            <div class="footer-section">
+                <a class="footer-item">Recent</a>
+                <a class="footer-item">Calendar</a>
+            </div>
+            <div class="footer-section">
+                <a class="footer-item">About</a>
+                <a class="footer-item">How this was made</a>
+            </div>
+        </div>
+        
+    </div>
+</footer>
     
 {% endblock contents%}

@@ -1,7 +1,131 @@
 html{
+    background-color: aliceblue;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .apptitle{
     font-size : 24px;
+}
+
+header{
+    max-width:  640px;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size : 24px;
+}
+header .apptitle{
+    display: flex;
+    align-items: center;
+    
+}
+header .apptitle img{
+    margin-right: 20px;
+}
+header .menu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #5c6b70
+}
+header .menu .menu-item{
+    margin-left: 50px;
+}
+
+.container{
+    max-width:  450px;
+    margin: 0 auto;
+    background-color: aliceblue;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size : 18px;
+}
+form input[type="text"]{
+    background-color: aliceblue;
+    margin-bottom: 10px;
+}
+
+form textarea {
+    max-width: 450px;
+    width: 100%;
+    font-size : 18px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 1px;
+    background-color: rgb(230, 240, 248);
+    margin-bottom: 10px;
+}
+form input[type="submit"]{
+    background-color: rgb(200, 220, 225);
+    border:none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 30px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    color: white;
+
+}
+form input[type="submit"]:hover{
+    background-color: rgb(28, 58, 230);
+    cursor: pointer;
+
+}
+.entries{
+    margin-top: 30px;
+}
+.entry-title{
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.entry-date{
+    color:#444849;
+    font-size: 16px;;
+}
+.entry-content{
+    font-size: 14px;
+    line-height: 150%;
+    margin-bottom: 10px;
+}
+
+footer{
+    background-color: #323F43;
+    padding: 40px 0;
+    margin: 50px 0 0 0;
+    border-top: 4pb solid black;
+    color:aliceblue;
+    font-size: 12px;
+}
+
+footer .footer-container{
+    max-width: 640px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+footer .left{
+    flex-grow: 2;
+    display: flex;
+    flex-direction: column;
+
+}
+footer .right{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+footer .footer-section{
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+.footer-item{
+    margin-bottom: 5px;
 }

@@ -1,5 +1,5 @@
 import datetime as dt
-
+import database
 from flask import Flask, render_template, request
 
 
@@ -7,7 +7,8 @@ from flask import Flask, render_template, request
 #print(f"hello world today is : {sdt}")
 
 app = Flask(__name__)
-entries=[]
+#entries=[]
+database.fn_create_article_table()
 
 @app.route("/", methods=["GET","POST"])
 @app.route("/home", methods=["GET","POST"])
@@ -23,10 +24,8 @@ def home():
                 #request.form.get(key)
             sdt=dt.datetime.now().strftime("%d-%b-%Y %H:%M:%S")
             content_dict['articledate']=sdt
-        entries.append(content_dict)    
-                
+        #entries.append(content_dict)
         #print(entries)
-    return render_template("home.html" , entries=entries)
-    
-
-
+        database.fn_create_article(content_dict['title'],content_dict['articledate'], content_dict['content'])    
+    #return render_template("home.html" , entries=entries)
+    return render_template("home.html" , entries=database.fn_retrieve_articles())
