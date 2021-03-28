@@ -20,7 +20,7 @@
             <div class="apptitle">Entries</div>
             <div class="entries">
                 {% for entry in entries%}
-                    <p>{{ entry['title'] }}</p>
+                    <p>{{ entry['title'] }} - {{entry['articledate']}}</p>
                     <p>{{ entry['content'] }}</p>
                 {% endfor %}
             </div>

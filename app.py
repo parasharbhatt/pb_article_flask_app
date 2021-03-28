@@ -2,8 +2,8 @@ import datetime as dt
 
 from flask import Flask, render_template, request
 
-x=dt.datetime.now()
-sdt=x.strftime("%d-%b-%Y %H:%M:%S")
+
+
 #print(f"hello world today is : {sdt}")
 
 app = Flask(__name__)
@@ -21,6 +21,8 @@ def home():
             elif key == "content":
                 content_dict[key] = val
                 #request.form.get(key)
+            sdt=dt.datetime.now().strftime("%d-%b-%Y %H:%M:%S")
+            content_dict['articledate']=sdt
         entries.append(content_dict)    
                 
         #print(entries)
