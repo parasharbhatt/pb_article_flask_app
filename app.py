@@ -29,3 +29,5 @@ def home():
         database.fn_create_article(content_dict['title'],content_dict['articledate'], content_dict['content'])    
     #return render_template("home.html" , entries=entries)
     return render_template("home.html" , entries=database.fn_retrieve_articles())
+
+
